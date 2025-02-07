@@ -1,4 +1,3 @@
-# Classe base Veicolo
 class Veicolo:
     def __init__(self, marca, modello, anno) :
         self._marca = marca
@@ -60,4 +59,41 @@ class GestoreParcoVeicoli :
                 return
         print("Il veicolo selezionato non è stato trovato nel parco veicoli.")
 
-    
+    def lista_veicoli(self) :
+        if len(self._veicoli) == 0:
+            print("Non ci sono veicoli nel parco.")
+        else:
+            print("Elenco dei veicoli nel parco:")
+            for veicolo in self._veicoli :
+                print(veicolo._marca + " " + veicolo._modello + "(" + str(veicolo._anno) +")")
+
+auto = Auto("FIAT", "Punto", 2002, 3)
+auto2 = Auto("Lamborghini", "Hurracan", 2020, 2)
+auto3 = Auto("FIAT", "Panda", 2023, 5)
+furgoncino = Furgone("Mercedes", "Sprinter", 2021, 1500)
+moto = Motocicletta("Yamaha", "R1", 2022, "sportiva")
+moto2 = Motocicletta("Honda", "ModX", 2018, "normale")
+
+gestore_parco_veicooli = GestoreParcoVeicoli()
+
+gestore_parco_veicooli.aggiungi_veicolo(auto)
+gestore_parco_veicooli.aggiungi_veicolo(auto2)
+gestore_parco_veicooli.aggiungi_veicolo(auto3)
+gestore_parco_veicooli.aggiungi_veicolo(furgoncino)
+gestore_parco_veicooli.aggiungi_veicolo(moto)
+
+gestore_parco_veicooli.lista_veicoli()
+
+auto.accendi()
+auto.suona_clacson()
+
+furgoncino.carica()
+furgoncino.scarica()
+ 
+moto.esegui_wheelie()
+moto2.esegui_wheelie()
+
+gestore_parco_veicooli.rimuovi_veicolo("Toyota", "Hybrid")
+gestore_parco_veicooli.lista_veicoli()
+gestore_parco_veicooli.rimuovi_veicolo("FIAT", "Punto")
+gestore_parco_veicooli.lista_veicoli()
